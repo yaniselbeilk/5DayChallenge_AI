@@ -75,4 +75,4 @@ history = model.fit(
   epochs=epochs
 )
 
-model.save("image_classifier")
+model.save("image_classifier.h5")

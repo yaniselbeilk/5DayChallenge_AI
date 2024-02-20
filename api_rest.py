@@ -34,7 +34,7 @@ def hello_world():
     img_data = io.BytesIO(base64.b64decode(b))
 
     # Load les données
-    model = tf.keras.models.load_model("image_classifier")
+    model = tf.keras.models.load_model("image_classifier.h5")
     #img_data = tf.keras.utils.get_file("img", origin=url)
     img = tf.keras.utils.load_img(
         img_data, target_size=(img_height, img_width)
