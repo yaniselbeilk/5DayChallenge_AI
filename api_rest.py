@@ -1,11 +1,15 @@
 from flask import Flask, request
+from flask_cors import CORS
 import tensorflow as tf
 import numpy as np
 import pathlib
+import io
+import base64
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route("/find", methods=['GET'])
+@app.route("/find", methods=['POST'])
 def hello_world():
     # Paramèttres
     batch_size = 32
@@ -24,10 +28,14 @@ def hello_world():
     )
     class_names = train_ds.class_names
 
+    # Récupération de l'image
+    url = request.json.get('url')
+    b = url.split("base64,")[1]
+    img_data = io.BytesIO(base64.b64decode(b))
+
     # Load les données
     model = tf.keras.models.load_model("image_classifier")
-    url = request.json.get('url')
-    img_data = tf.keras.utils.get_file("img", origin=url)
+    #img_data = tf.keras.utils.get_file("img", origin=url)
     img = tf.keras.utils.load_img(
         img_data, target_size=(img_height, img_width)
     )
