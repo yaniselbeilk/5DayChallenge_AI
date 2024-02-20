@@ -76,6 +76,7 @@
             <div id="preview"></div>
         </div>
         <button id="match-btn">Match</button>
+        <div id="brand-name"></div>
         <a href="frontend.html" id="back-btn">Retour à la page d'accueil</a>
     </div>
     
@@ -92,6 +93,14 @@
                 // Envoyer l'image au serveur pour la détection de logo
                 // Ici vous pouvez utiliser fetch() ou une autre méthode pour envoyer l'image au serveur et obtenir le résultat de la détection de logo
                 // Le résultat peut ensuite être affiché à l'utilisateur dans cette fonction ou dans une fonction de retour depuis le serveur
+                
+                // Simulation de la détection de logo réussie
+                const isLogoDetected = true;
+                if (isLogoDetected) {
+                    document.getElementById('brand-name').textContent = "Google"; // Remplacer "Google" par le nom de la marque détectée
+                } else {
+                    document.getElementById('brand-name').textContent = "Aucun logo détecté";
+                }
             };
             
             reader.readAsDataURL(file);
