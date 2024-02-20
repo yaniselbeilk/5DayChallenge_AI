@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Détection de Logo - Upload</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        text-align: center;
+        padding: 20px;
+    }
+    #upload-container {
+        border: 2px dashed #3498db;
+        padding: 20px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        max-width: 400px;
+    }
+    #preview {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+    #back-btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    #back-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+    <h1>Détection de Logo - Upload</h1>
+    <div id="upload-container">
+        <input type="file" accept="image/*" id="upload-input">
+        <div id="preview"></div>
+    </div>
+    
+    <a href="frontend.html" id="back-btn">Retour à la page d'accueil</a>
+    
+    <script>
+        document.getElementById('upload-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const imageSrc = e.target.result;
+                const preview = document.getElementById('preview');
+                preview.innerHTML = `<img src="${imageSrc}" alt="Uploaded Image" style="max-width: 100%;">`;
+                
+                // Envoyer l'image au serveur pour la détection de logo
+                // Ici vous pouvez utiliser fetch() ou une autre méthode pour envoyer l'image au serveur et obtenir le résultat de la détection de logo
+                // Le résultat peut ensuite être affiché à l'utilisateur dans cette fonction ou dans une fonction de retour depuis le serveur
+            };
+            
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
