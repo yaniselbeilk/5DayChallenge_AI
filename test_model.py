@@ -29,7 +29,7 @@ class_names = train_ds.class_names
 
 import pathlib
 #Load les données
-model = tf.keras.models.load_model("image_classifier")
+model = tf.keras.models.load_model("image_classifier.h5")
 data_dir = pathlib.Path("ImageFound/microsoft/Microsoft (1).jpg")
 img = tf.keras.utils.load_img(
     data_dir, target_size=(img_height, img_width)
