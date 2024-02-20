@@ -29,6 +29,9 @@
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre douce */
         margin: 20px;
+        position: absolute;
+        top: 120px;
+        left: 100px;
     }
     .title {
         font-size: 36px;
@@ -39,21 +42,21 @@
     .subtitle {
         font-size: 18px;
         color: #666; /* Couleur gris foncé */
-        margin-bottom: 20px;
+        margin-bottom: 500px;
     }
     .icon-container {
         transition: transform 0.3s ease; /* Effet de transition au survol */
         margin-bottom: 60px;
         position: absolute;
-        top: 390px;
+        top: 290px;
         left: 150px;
     }
     .icon-container:hover {
         transform: scale(1.1); /* Zoom au survol */
     }
     .icon {
-        width: 150px; /* Taille de l'icône */
-        height: 110px;    
+        width: 120px; /* Taille de l'icône */
+        height: 100px;    
     }
     .team-link {
         color: #fff; /* Couleur blanche */
@@ -62,6 +65,9 @@
         position: absolute;
         top: 10px;
         right: 10px;
+        background-color: #007bff; /* Couleur de fond du bandeau */
+        padding: 10px 20px; /* Espacement intérieur du bandeau */
+        border-radius: 5px; /* Bordure arrondie */
     }
     .team-link:hover {
         text-decoration: underline;
@@ -69,7 +75,8 @@
     .footer {
         font-size: 14px;
         color: #888; /* Couleur gris clair */
-        margin-top: 20px;
+        margin-top: 650px;
+        margin-left: 630px;
         text-align: center; /* Centrer le texte */
     }
     .icon-top-left {
@@ -80,31 +87,11 @@
     }
     .image-right {
         position: absolute;
-        top: 150px;
+        top: 100px;
         right: 200px;
-        width: 400px; /* Largeur du cadre */
-        height: 400px; /* Hauteur du cadre */
-        overflow: hidden; /* Cache le contenu qui dépasse */
-    }
-    .frame {
-        width: 100%; /* Largeur maximale */
-        height: auto; /* Hauteur automatique */
-        transform: rotate(90deg); /* Rotation de l'image */
-        background-image: url('loutre.png'); /* Image de fond */
-        background-size: contain; /* Ajustement de la taille de l'image de fond */
-       /* background-repeat: no-repeat; /* Ne pas répéter l'image de fond */
-        position: relative; /* Position relative pour contenir les éléments enfants */
     }
     .loutre {
-        position: absolute; /* Position absolue par rapport à l'image de fond */
-        top: 0;
-        left: 0;
-        width: 100%; /* Largeur maximale */
-        height: 100%; /* Hauteur maximale */
-        /* background-image: url('loutre.png'); /* Image de fond */
-        /*background-size: contain; /* Ajustement de la taille de l'image de fond */
-        /*background-repeat: no-repeat; /* Ne pas répéter l'image de fond */
-        /*z-index: -1; /* Mettre en arrière-plan par rapport au contenu */
+        max-width: 400px; /* Largeur maximale */
     }
     .defi {
         margin-top: 20px; /* Espacement vers le haut */
@@ -129,9 +116,7 @@
     <a href="team_page.html" class="team-link">Présentation de l'équipe</a>
     <div class="footer">© 2024 Détection de Logo - Tous droits réservés</div>
     <div class="image-right">
-        <div class="frame">
-            <div class="loutre"></div>
-        </div>
+        <img src="loutre.png" alt="Right Image" class="loutre">
     </div>
 </body>
 </html>

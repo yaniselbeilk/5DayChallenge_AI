@@ -3,22 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Détection de Logo - Upload</title>
+<title>Accueil - Détection de Logo</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4; /* Couleur de fond */
+        background-image: url('background.jpg'); /* Image d'arrière-plan */
+        background-size: cover;
+        background-position: center;
         color: #333;
         text-align: center;
+    }
+    .container {
+        text-align: left; /* Alignement du texte à gauche */
+        width: 400px; /* Largeur fixe */
         padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9); /* Fond légèrement transparent */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre douce */
+        margin: 20px auto;
+    }
+    .title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #007bff; /* Couleur bleue */
+        margin-bottom: 20px;
     }
     #upload-container {
         border: 2px dashed #3498db;
         padding: 20px;
-        margin: 20px auto;
+        margin-bottom: 20px;
         background-color: #fff;
         border-radius: 10px;
-        max-width: 400px;
     }
     #preview {
         max-width: 100%;
@@ -39,13 +57,14 @@
 </style>
 </head>
 <body>
-    <h1>Détection de Logo - Upload</h1>
-    <div id="upload-container">
-        <input type="file" accept="image/*" id="upload-input">
-        <div id="preview"></div>
+    <div class="container">
+        <div class="title">Détection de Logo</div>
+        <div id="upload-container">
+            <input type="file" accept="image/*" id="upload-input">
+            <div id="preview"></div>
+        </div>
+        <a href="frontend.html" id="back-btn">Retour à la page d'accueil</a>
     </div>
-    
-    <a href="frontend.html" id="back-btn">Retour à la page d'accueil</a>
     
     <script>
         document.getElementById('upload-input').addEventListener('change', function(event) {
