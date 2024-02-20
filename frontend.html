@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil - Détection de Logo</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4; /* Couleur de fond */
+        background-image: url('background.jpg'); /* Image d'arrière-plan */
+        background-size: cover;
+        background-position: center;
+        height: 100vh; /* Pleine hauteur de la fenêtre */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Alignement des éléments en haut */
+        flex-direction: column; /* Empêcher le logo d'être centré horizontalement */
+        position: relative; /* Permet de positionner les éléments enfants de manière absolue */
+    }
+    .container {
+        text-align: left; /* Alignement du texte à gauche */
+        width: 400px; /* Largeur fixe */
+        height: 400px; /* Hauteur fixe */
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9); /* Fond légèrement transparent */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Ombre douce */
+        margin: 20px;
+        position: absolute;
+        top: 120px;
+        left: 100px;
+    }
+    .title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #007bff; /* Couleur bleue */
+        margin-bottom: 20px;
+    }
+    .subtitle {
+        font-size: 18px;
+        color: #666; /* Couleur gris foncé */
+        margin-bottom: 500px;
+    }
+    .icon-container {
+        transition: transform 0.3s ease; /* Effet de transition au survol */
+        margin-bottom: 60px;
+        position: absolute;
+        top: 290px;
+        left: 150px;
+    }
+    .icon-container:hover {
+        transform: scale(1.1); /* Zoom au survol */
+    }
+    .icon {
+        width: 120px; /* Taille de l'icône */
+        height: 100px;    
+    }
+    .team-link {
+        color: #fff; /* Couleur blanche */
+        text-decoration: none;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #007bff; /* Couleur de fond du bandeau */
+        padding: 10px 20px; /* Espacement intérieur du bandeau */
+        border-radius: 5px; /* Bordure arrondie */
+    }
+    .team-link:hover {
+        text-decoration: underline;
+    }
+    .footer {
+        font-size: 14px;
+        color: #888; /* Couleur gris clair */
+        margin-top: 650px;
+        margin-left: 630px;
+        text-align: center; /* Centrer le texte */
+    }
+    .icon-top-left {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1000; /* Assure que l'icône est au-dessus du contenu */
+    }
+    .image-right {
+        position: absolute;
+        top: 100px;
+        right: 200px;
+    }
+    .loutre {
+        max-width: 400px; /* Largeur maximale */
+    }
+    .defi {
+        margin-top: 20px; /* Espacement vers le haut */
+    }
+</style>
+</head>
+<body>
+    <div class="icon-top-left">
+        <img src="logo_icon.png" alt="Logo Icon" class="icon">
+    </div>
+    <div class="container">
+        <div class="title">Hello je suis La Loutre</div>
+        <div class="defi">Je suis infaillible pour trouver les logos de Google, Microsoft, Apple, Intel et Nvidia.</div>
+        <div class="defi">Met moi au défi !</div>
+        <div class="defi">Cliquez sur l'icône ci-dessous pour commencer</div>
+        <div class="icon-container">
+            <a href="upload_page.html"> <!-- Lien vers la page d'upload -->
+                <img src="upload_icon.png" alt="Upload Icon" class="icon">
+            </a>
+        </div>
+    </div>
+    <a href="team_page.html" class="team-link">Présentation de l'équipe</a>
+    <div class="footer">© 2024 Détection de Logo - Tous droits réservés</div>
+    <div class="image-right">
+        <img src="loutre.png" alt="Right Image" class="loutre">
+    </div>
+</body>
+</html>
