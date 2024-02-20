@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Détection de Logo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            /* Couleur de fond */
+            background-image: url('background.jpg');
+            /* Image d'arrière-plan */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            /* Pleine hauteur de la fenêtre */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            /* Alignement des éléments en haut */
+            flex-direction: column;
+            /* Empêcher le logo d'être centré horizontalement */
+            position: relative;
+            /* Permet de positionner les éléments enfants de manière absolue */
+        }
+
+        .container {
+            text-align: left;
+            /* Alignement du texte à gauche */
+            width: 400px;
+            /* Largeur fixe */
+            /* Hauteur fixe */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Fond légèrement transparent */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            /* Ombre douce */
+            margin: 20px;
+            position: absolute;
+            top: 120px;
+            left: 100px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #007bff;
+            /* Couleur bleue */
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            /* Couleur gris foncé */
+            margin-bottom: 500px;
+        }
+
+        .icon-container {
+            transition: transform 0.3s ease;
+            /* Effet de transition au survol */
+            margin-bottom: 60px;
+            margin-top: 30px;
+        }
+
+        .icon-container:hover {
+            transform: scale(1.1);
+            /* Zoom au survol */
+        }
+
+        .icon {
+            width: 120px;
+            /* Taille de l'icône */
+            height: 100px;
+        }
+
+        .team-link {
+            color: #fff;
+            /* Couleur blanche */
+            text-decoration: none;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            /* Couleur de fond du bandeau */
+            padding: 10px 20px;
+            /* Espacement intérieur du bandeau */
+            border-radius: 5px;
+            /* Bordure arrondie */
+        }
+
+        .team-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #888;
+            /* Couleur gris clair */
+            margin-top: 650px;
+            margin-left: 630px;
+            text-align: center;
+            /* Centrer le texte */
+        }
+
+        .icon-top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            /* Assure que l'icône est au-dessus du contenu */
+        }
+
+        .image-right {
+            position: absolute;
+            top: 100px;
+            right: 200px;
+        }
+
+        .loutre {
+            max-width: 400px;
+            /* Largeur maximale */
+        }
+
+        .defi {
+            margin-top: 20px;
+            /* Espacement vers le haut */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="icon-top-left">
+        <img src="logo_icon.png" alt="Logo Icon" class="icon">
+    </div>
+    <div class="container">
+        <div class="title">Hello je suis La Loutre</div>
+        <div class="defi">Je suis infaillible pour trouver les logos de Google, Microsoft, Apple, Intel et Nvidia.</div>
+        <div class="defi">Met moi au défi !</div>
+        <div class="defi">Cliquez sur l'icône ci-dessous pour commencer</div>
+        <div class="icon-container">
+            <div id="upload-container">
+                <input type="file" accept="image/*" id="upload-input" style="display: none;">
+                <label for="upload-input">
+                    <div id="preview" style="text-align: center;">
+                        <img src="upload_icon.png" alt="Upload Icon" class="icon">
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div id="result"></div>
+    </div>
+    <div class="footer">© 2024 Détection de Logo - Tous droits réservés</div>
+    <div class="image-right">
+        <img src="loutre.png" alt="Right Image" class="loutre">
+    </div>
+</body>
+
+</html>
+
+<script>
+    console.log(window.location)
+    document.getElementById('upload-input').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const imageSrc = e.target.result;
+            const preview = document.getElementById('preview');
+            preview.innerHTML = `<img src="${imageSrc}" alt="Uploaded Image" style="max-width: 100%;">`;
+
+            async function postData(url = "") {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify({ "url": imageSrc }), // body data type must match "Content-Type" header
+                });
+                return response.json();
+            }
+            //const url = "http://127.0.0.1:5000";
+            //const url = window.location+":5000";
+            const url = "http://localhost:5000";
+            postData(url + "/find").then((data) => {
+                document.getElementById('result').innerHTML = "Le logo appartient à <strong>" + data.name + "</strong> avec une certitude de " + data.score + "%"
+            });
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
